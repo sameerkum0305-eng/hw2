@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Word of the Day</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h1>Sameer's Word of the Day!</h1>
+
+  <div>
+    <div id="word">Loading...</div>
+    <div id="part"></div>
+    <div id="definition"></div>
+  </div>
+
+  <script>
+    async function getNewWord() {
+      try {
+        const response = await fetch('/wordRequest');
+        const data = await response.json();
+        document.getElementById('word').textContent = data.word;
+        document.getElementById('part').textContent = data.part;
+        document.getElementById('definition').textContent = data.definition;
+      } 
+      catch (error) {
+        document.getElementById('word').textContent = "Error loading!";
+      }
+    }
+
+    getNewWord();
+  </script>
+</body>
+</html>
