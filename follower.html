@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <body>
+    <script>
+      class Follower extends Actor {
+        constructor(startX, startY, player) {
+          super(startX, startY);
+          this.player = player;
+        }
+
+        follow() {
+          this.x = this.player.x;
+          this.y = this.player.y;
+        }
+      }
+
+      let player2 = new Player(0, 0);
+      let follower1 = new Follower(5, 5, player2);
+
+      console.log("Before the move:");
+      console.log(player2.x, player2.y);
+      console.log(follower1.x, follower1.y);
+
+player2.move(3, 2);
+
+      console.log("After player moves:");
+      console.log(player2.x, player2.y);
+      console.log(follower1.x, follower1.y);
+
+      follower1.follow();
+      console.log("After follow:", follower1.x, follower1.y);
+    </script>
+  </body>
+</html>
